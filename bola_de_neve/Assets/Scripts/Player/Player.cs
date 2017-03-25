@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ public class Player : MonoBehaviour {
 
     public PlayerActionFSM fsm;
 
+    public bool awaitLevelStart = false;
+
     public bool CanMove
     {
         get
@@ -20,12 +23,14 @@ public class Player : MonoBehaviour {
         }
     }
 
-
-	void Start () {
+    void Start () {
         Body = GetComponent<Rigidbody>();
         PlayerInput = GetComponent<PlayerInput>();
         fsm = new PlayerActionFSM(this);
-        fsm.Push(new PlayerIdleState(fsm));
+        if (awaitLevelStart)
+            fsm.Push(new PlayerStartState(fsm));
+        else
+            fsm.Push(new PlayerIdleState(fsm));
 	}
 	
 	void Update () {
@@ -40,5 +45,10 @@ public class Player : MonoBehaviour {
     public void ShootDown()
     {
         fsm.Current.ShootDown();
+    }
+
+    public void OnBattleStart()
+    {
+        fsm.AdvanceTo(new PlayerIdleState(fsm));
     }
 }
