@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-	// Use this for initialization
+    Rigidbody body;
+    
+    Vector3 inputDirection;
+
+    public float force = 3f;
+    
 	void Start () {
-		
+        body = GetComponent<Rigidbody>();
 	}
 	
-	// Update is called once per frame
 	void Update () {
-		
+        inputDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 	}
 
 	void FixedUpdate(){
-		
+        body.AddForce(force * inputDirection);
 	}
 }
