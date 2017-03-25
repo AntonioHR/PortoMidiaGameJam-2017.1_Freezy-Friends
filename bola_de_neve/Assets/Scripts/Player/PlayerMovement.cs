@@ -25,17 +25,10 @@ public class PlayerMovement : MonoBehaviour {
         if (!player.CanMove)
         {
             Break();
-        }
-        else
-        {
-            if (!player.CanMove && inputDirection.sqrMagnitude <= velocityAutoStop)
-            {
-                Break();
-            }
-            else
-            {
-                body.AddForce(force * inputDirection, ForceMode.Acceleration);
-            }
+        } else if (inputDirection.sqrMagnitude <= velocityAutoStop) {
+            Break();
+        } else  {
+            body.AddForce(force * inputDirection, ForceMode.Acceleration);
         }
         
 	}

@@ -14,7 +14,7 @@ public class PlayerAimState : PlayerActionState
     {
         get
         {
-            return false;
+            return true;
         }
     }
 
