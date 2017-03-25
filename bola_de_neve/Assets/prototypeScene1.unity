@@ -472,7 +472,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 499254856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a21e8fdb996b5541922140a11fe06db, type: 3}
+  m_Script: {fileID: 11500000, guid: 6af694274baf5574381dcb07f256c9a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 87aa25f7ce9f0b54b9d89f0d68a1ea9b, type: 2}
@@ -502,7 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 30
-  stopForce: 15
+  stopForce: 30
   velocityAutoStop: 0.1
 --- !u!54 &499254860
 Rigidbody:
@@ -1884,7 +1884,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1886860588}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a21e8fdb996b5541922140a11fe06db, type: 3}
+  m_Script: {fileID: 11500000, guid: 6af694274baf5574381dcb07f256c9a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 9f9a6fdd3470c704eb454763eb228ca9, type: 2}
