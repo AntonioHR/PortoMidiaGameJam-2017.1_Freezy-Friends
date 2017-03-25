@@ -20,7 +20,8 @@ public class PlayerAimState : PlayerActionState
 
     public override void Update()
     {
-        fsm.player.cannon.transform.rotation = Quaternion.LookRotation(fsm.player.PlayerInput.pointedDirection, Vector3.up);
+        if(fsm.player.PlayerInput.pointedDirection.sqrMagnitude >= 0.1f)
+            fsm.player.cannon.transform.rotation = Quaternion.LookRotation(fsm.player.PlayerInput.pointedDirection, Vector3.up);
     }
 
     public override void ShootDown()
