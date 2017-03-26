@@ -501,7 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9024f1cf5c3e0432895657e46fb819fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 30
+  force: 40
   stopForce: 30
   velocityAutoStop: 0.1
   velocityCap: 10
@@ -757,6 +757,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: 1
+  inclineAngle: 18
+  owner: {fileID: 0}
 --- !u!4 &610918652
 Transform:
   m_ObjectHideFlags: 0
@@ -764,7 +766,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 610918650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.67, z: 0}
+  m_LocalPosition: {x: 0, y: 1.23, z: 0.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 499254861}
@@ -1063,7 +1065,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 977236311}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.67, z: 0}
+  m_LocalPosition: {x: 0, y: 1.23, z: 0.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1886860590}
@@ -1081,6 +1083,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: 1
+  inclineAngle: 18
+  owner: {fileID: 0}
 --- !u!1 &1104459087
 GameObject:
   m_ObjectHideFlags: 0
@@ -1474,6 +1478,7 @@ GameObject:
   - component: {fileID: 1407475560}
   - component: {fileID: 1407475559}
   - component: {fileID: 1407475558}
+  - component: {fileID: 1407475561}
   m_Layer: 0
   m_Name: Collision
   m_TagString: Untagged
@@ -1545,6 +1550,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1407475556}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1407475561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1407475556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08036b810a7d194c8f6fabbaa0db483, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 499254858}
 --- !u!1 &1500096399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1694,7 +1711,7 @@ GameObject:
   - component: {fileID: 1856121728}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1830,7 +1847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9024f1cf5c3e0432895657e46fb819fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 30
+  force: 40
   stopForce: 30
   velocityAutoStop: 0.1
   velocityCap: 10
@@ -1901,6 +1918,7 @@ GameObject:
   - component: {fileID: 2017642002}
   - component: {fileID: 2017642001}
   - component: {fileID: 2017642000}
+  - component: {fileID: 2017642003}
   m_Layer: 0
   m_Name: Collision
   m_TagString: Untagged
@@ -1972,3 +1990,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2017641998}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2017642003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2017641998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08036b810a7d194c8f6fabbaa0db483, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 1886860592}

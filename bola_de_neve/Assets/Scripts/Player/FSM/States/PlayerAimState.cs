@@ -28,6 +28,7 @@ public class PlayerAimState : PlayerActionState
     public override void ShootUp()
     {
         fsm.player.cannon.Shoot(fsm.player.defaultBullet);
+
         fsm.AdvanceTo(new PlayerIdleState(fsm));
     }
 }

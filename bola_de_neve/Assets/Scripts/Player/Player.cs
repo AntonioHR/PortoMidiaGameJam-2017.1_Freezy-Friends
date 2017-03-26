@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
     public Cannon cannon;
 
-    public Bullet defaultBullet;
+    public BulletData defaultBullet;
 
     public Rigidbody Body { get; private set; }
     public PlayerInput PlayerInput { get; private set; }
@@ -24,6 +24,7 @@ public class Player : MonoBehaviour {
     }
 
     void Start () {
+        cannon.owner = this;
         Body = GetComponent<Rigidbody>();
         PlayerInput = GetComponent<PlayerInput>();
         fsm = new PlayerActionFSM(this);
@@ -32,8 +33,14 @@ public class Player : MonoBehaviour {
         else
             fsm.Push(new PlayerIdleState(fsm));
 	}
-	
-	void Update () {
+
+    internal void HitBy(Bullet bullet)
+    {
+        var direction = (transform.position - bullet.transform.position).normalized;
+        Body.AddForce(direction * bullet.settings.Impact, ForceMode.Impulse);
+    }
+
+    void Update () {
         fsm.Current.Update();
 
         if (PlayerInput.pointedDirection.sqrMagnitude >= 0.1f)
@@ -53,5 +60,16 @@ public class Player : MonoBehaviour {
     public void OnBattleStart()
     {
         fsm.AdvanceTo(new PlayerIdleState(fsm));
+    }
+
+    public static Player GetFromCollider(Collider col)
+    {
+        var player = col.GetComponent<Player>();
+        var body = col.GetComponent<PlayerBody>();
+        if (body != null && player == null)
+        {
+            player = body.owner;
+        }
+        return player;
     }
 }

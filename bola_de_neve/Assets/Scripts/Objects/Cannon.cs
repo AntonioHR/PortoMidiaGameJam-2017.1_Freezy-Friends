@@ -8,20 +8,34 @@ using UnityEngine;
 public class Cannon : MonoBehaviour {
     public float offset;
 
-    public void Shoot(Bullet bullet)
+    [Range(0, 90)]
+    public float inclineAngle;
+
+    public Player owner;
+    public Vector3 ShootVec
     {
-        Vector3 shootVec = transform.TransformVector(Vector3.forward * offset);
-        var obj = bullet.Create();
+        get {
+            return transform.TransformVector(
+                Quaternion.AngleAxis(inclineAngle, Vector3.left) * Vector3.forward * offset);
+        }
+    }
+    public GameObject Shoot(BulletData bulletData)
+    {
+        Vector3 shootVec = ShootVec;
+        var obj = bulletData.Create();
         obj.transform.position = transform.position + shootVec * offset;
         obj.transform.rotation = transform.rotation;
+        var bullet = obj.GetComponent<Bullet>();
 
-        var rb = obj.GetComponent<Rigidbody>().velocity = bullet.shootSpeed * shootVec;
-        
+        bullet.body.velocity = bulletData.shootSpeed * shootVec;
+        bullet.SetOwner(owner);
+
+        return obj;
     }
 
     void OnDrawGizmos()
     {
-        Vector3 shootVec = transform.TransformVector(Vector3.forward * offset);
+        Vector3 shootVec = ShootVec;
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position, shootVec);
         Gizmos.DrawSphere(transform.position + shootVec, .1f);
