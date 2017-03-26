@@ -31,7 +31,7 @@ public class BattleUI : MonoBehaviour {
 
     public void StartBattleOverAnimation(string playerName)
     {
-        battleOverText.text = string.Format("Player {0} Won", playerName);
+        battleOverText.text = string.Format("{0} Won", playerName);
         animator.SetTrigger("Over");
     }
     public void StartAnimationDone()
