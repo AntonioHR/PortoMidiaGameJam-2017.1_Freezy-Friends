@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour {
     public PlayerDetector detector;
     public Rigidbody body;
 
+    public GameObject ImpactPrefab;
+
     Player owner;
 
     public Player Owner { get { return owner; } }
@@ -48,6 +50,9 @@ public class Bullet : MonoBehaviour {
         if (player != null && player != owner)
         {
             player.HitBy(this);
+            Vector3 impact = -ImpactVec;
+            impact.y = .3f;
+            GameObject.Instantiate(ImpactPrefab, transform.position, Quaternion.LookRotation(impact) );
         }
     }
 

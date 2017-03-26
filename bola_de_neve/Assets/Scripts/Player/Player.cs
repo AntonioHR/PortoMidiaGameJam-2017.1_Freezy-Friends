@@ -28,6 +28,8 @@ public class Player : MonoBehaviour {
     public PlayerInput PlayerInput { get; private set; }
     public PlayerUI PlayUI { get; private set; }
 
+    public PlayerAudioHandler audio;
+
     internal void DashDown()
     {
         fsm.Current.OnDashDown();
@@ -75,10 +77,7 @@ public class Player : MonoBehaviour {
         PlayerInput = GetComponent<PlayerInput>();
         PlayUI = GetComponent<PlayerUI>();
         fsm = new PlayerActionFSM(this);
-        if (awaitLevelStart)
-            fsm.Push(new PlayerStartState(fsm));
-        else
-            fsm.Push(new PlayerIdleState(fsm));
+        fsm.Push(new PlayerStartState(fsm));
 	}
 
     internal void HitBy(Bullet bullet)
@@ -87,6 +86,7 @@ public class Player : MonoBehaviour {
             return;
         //var direction = (transform.position - bullet.transform.position).normalized;
         //var direction = bullet.GetComponent<Rigidbody>().velocity.normalized;
+        audio.PlayHit();
         var direction = bullet.ImpactVec.normalized;
         Body.AddForce(direction * bullet.settings.Impact, ForceMode.Impulse);
         life--;
@@ -160,6 +160,7 @@ public class Player : MonoBehaviour {
     }
     internal void Respawn()
     {
+        audio.PlaySpawn();
         life = settings.startLife;
         gameObject.SetActive(true);
     }

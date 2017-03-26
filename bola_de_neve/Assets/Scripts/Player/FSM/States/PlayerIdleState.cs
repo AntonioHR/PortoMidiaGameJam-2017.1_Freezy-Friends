@@ -20,6 +20,7 @@ public class PlayerIdleState : PlayerActionState
 
     public override void ShootUp()
     {
+        fsm.AdvanceTo(new PlayerAimState(fsm));
     }
 
     public override void ShootDown()

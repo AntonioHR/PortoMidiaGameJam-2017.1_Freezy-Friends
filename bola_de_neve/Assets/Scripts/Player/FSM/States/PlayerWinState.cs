@@ -17,6 +17,10 @@ public class PlayerWinState : PlayerActionState
         }
     }
 
+    public override void OnEnter()
+    {
+        fsm.player.audio.PlayWin();
+    }
     public override void ShootDown()
     {
     }

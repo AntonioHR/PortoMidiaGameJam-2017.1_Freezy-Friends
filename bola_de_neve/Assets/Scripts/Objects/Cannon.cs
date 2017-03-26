@@ -8,6 +8,27 @@ using UnityEngine;
 public class Cannon : MonoBehaviour {
     public float offset;
 
+    Quaternion lockedRot;
+    bool lockRot;
+    public bool Lock
+    {
+        get
+        {
+            return lockRot;
+        }
+        set
+        {
+            if (value)
+            {
+                lockedRot = transform.rotation;
+            } else
+            {
+                transform.localRotation = Quaternion.identity;
+            }
+            lockRot = value;
+        }
+    }
+
     [Range(0, 90)]
     public float inclineAngle;
 
@@ -17,6 +38,13 @@ public class Cannon : MonoBehaviour {
         get {
             return transform.TransformVector(
                 Quaternion.AngleAxis(inclineAngle, Vector3.left) * Vector3.forward * offset);
+        }
+    }
+    public void LateUpdate()
+    {
+        if(lockRot)
+        {
+            transform.rotation = lockedRot;
         }
     }
     public GameObject Shoot(BulletData bulletData)

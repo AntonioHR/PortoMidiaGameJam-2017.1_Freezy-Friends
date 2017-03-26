@@ -14,10 +14,10 @@ public class PlayerStartState : PlayerActionState
     {
         get
         {
-            return false;
+            return fsm.player.awaitLevelStart;
         }
     }
-
+    
     public override void ShootDown()
     {
     }

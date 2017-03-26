@@ -151,6 +151,8 @@ MonoBehaviour:
   homing: {fileID: 114203820655621004}
   detector: {fileID: 114787205646614920}
   body: {fileID: 54360157554906840}
+  ImpactPrefab: {fileID: 1568851620362660, guid: 20a65c9bd9680dd419e77ed5d9f48035,
+    type: 2}
   settings:
     Impact: 50
 --- !u!114 &114203820655621004

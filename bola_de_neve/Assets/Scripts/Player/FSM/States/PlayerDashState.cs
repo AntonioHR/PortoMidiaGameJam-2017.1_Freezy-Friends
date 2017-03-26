@@ -55,4 +55,12 @@ public class PlayerDashState : PlayerActionState
     public override void ShootUp()
     {
     }
+    public override void OnDashDown()
+    {
+        Vector3 target = fsm.player.PlayerInput.pointedDirection;
+        if(Vector3.Dot(target, fsm.player.Body.velocity) < 0)
+        {
+            fsm.AdvanceTo(new PlayerDashState(fsm));
+        }
+    }
 }

@@ -10,6 +10,7 @@ public class PlayerShootState : PlayerActionState
     }
     public override void OnEnter()
     {
+        fsm.player.cannon.Lock = true;
         fsm.player.AnimationHandler.StartShoot();
         fsm.player.AnimationHandler.OnAnimationEvent += AnimationHandler_OnAnimationEvent;
     }
@@ -21,6 +22,7 @@ public class PlayerShootState : PlayerActionState
             fsm.player.cannon.Shoot(fsm.player.settings.defaultBullet);
             fsm.player.AnimationHandler.OnAnimationEvent -= AnimationHandler_OnAnimationEvent;
             fsm.AdvanceTo(new PlayerIdleState(fsm));
+            fsm.player.cannon.Lock = false;
         }
     }
 
