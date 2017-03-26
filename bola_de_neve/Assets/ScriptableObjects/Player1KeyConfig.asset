@@ -16,3 +16,4 @@ MonoBehaviour:
   downKey: 115
   upKey: 119
   fireKey: 32
+  dashKey: 304

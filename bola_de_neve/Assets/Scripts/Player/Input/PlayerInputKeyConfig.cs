@@ -13,6 +13,7 @@ public class PlayerInputKeyConfig:PlayerInputConfig
     public KeyCode upKey;
 
     public KeyCode fireKey;
+    public KeyCode dashKey;
 
     public override bool ShootDown
     {
@@ -27,6 +28,14 @@ public class PlayerInputKeyConfig:PlayerInputConfig
         get
         {
             return Input.GetKeyUp(fireKey);
+        }
+    }
+
+    public override bool DashDown
+    {
+        get
+        {
+            return Input.GetKeyDown(dashKey);
         }
     }
 

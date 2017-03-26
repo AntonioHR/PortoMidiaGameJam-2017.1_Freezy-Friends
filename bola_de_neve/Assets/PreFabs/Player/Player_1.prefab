@@ -1137,6 +1137,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
     defaultBullet: {fileID: 11400000, guid: 6885939a9dcfd1744a39e0ec73b51813, type: 2}
+    name: 
+    dashForce: 60
+    dashTime: 0.2
   cannon: {fileID: 114269426276595210}
   AnimationHandler: {fileID: 114209235233452458}
   awaitLevelStart: 0

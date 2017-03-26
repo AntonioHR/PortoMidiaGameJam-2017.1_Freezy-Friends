@@ -13,11 +13,14 @@ public abstract class PlayerActionState : State<PlayerActionFSM, PlayerActionSta
     }
 
     public abstract bool CanMove { get; }
+    public virtual bool CanBreak { get { return true; } }
     public virtual bool Dead { get { return false; } }
 
     public abstract void ShootUp();
 
     public abstract void ShootDown();
 
-
+    public virtual  void OnDashDown()
+    {
+    }
 }

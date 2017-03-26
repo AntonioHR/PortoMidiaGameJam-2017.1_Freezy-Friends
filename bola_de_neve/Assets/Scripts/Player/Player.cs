@@ -10,6 +10,8 @@ public class Player : MonoBehaviour {
     {
         public BulletData defaultBullet;
         public string name;
+        public float dashForce = 40;
+        public float dashTime;
     }
     public Settings settings;
     public Cannon cannon;
@@ -18,6 +20,12 @@ public class Player : MonoBehaviour {
     public Rigidbody Body { get; private set; }
     public PlayerInput PlayerInput { get; private set; }
     public PlayerUI PlayUI { get; private set; }
+
+    internal void DashDown()
+    {
+        fsm.Current.OnDashDown();
+    }
+
     public PlayerAnimationHandler AnimationHandler;
 
     public event Action<Player> OnDie;
@@ -44,6 +52,14 @@ public class Player : MonoBehaviour {
             return fsm.Current.Dead;
         }
     }
+    public bool CanBreak
+    {
+        get
+        {
+            return fsm.Current.CanBreak;
+        }
+    }
+
 
     void Start () {
         cannon.owner = this;

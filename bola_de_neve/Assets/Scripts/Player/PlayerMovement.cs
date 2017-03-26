@@ -46,6 +46,12 @@ public class PlayerMovement : MonoBehaviour {
 
     void Break()
     {
+        if (!player.CanBreak)
+        {
+            Debug.Log("Not Breaking!!");
+            return;
+        }
+
         if (body.velocity.sqrMagnitude <= velocityAutoStop)
             body.velocity = Vector3.zero;
         else

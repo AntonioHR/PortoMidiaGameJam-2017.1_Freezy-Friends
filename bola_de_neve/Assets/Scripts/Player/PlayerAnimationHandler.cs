@@ -37,4 +37,14 @@ public class PlayerAnimationHandler : MonoBehaviour {
             OnAnimationEvent(ev);
         }
     }
+
+    internal void StartDashAnimation()
+    {
+        animator.SetBool("Dash", true);
+    }
+
+    internal void StopDashAnimation()
+    {
+        animator.SetBool("Dash", false);
+    }
 }

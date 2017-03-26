@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Name: Joystick1
   m_EditorClassIdentifier: 
   joystickFireButton: JOY1_FIRE
+  joystickDashButton: JOY1_DASH
   veticalAxis: P1_VER
   horizontalAxis: P1_HOR

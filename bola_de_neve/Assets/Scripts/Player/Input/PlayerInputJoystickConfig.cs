@@ -10,6 +10,7 @@ public class PlayerInputJoystickConfig: PlayerInputConfig
     //public int joystickNumber;
 
     public string joystickFireButton;
+    public string joystickDashButton;
     public string veticalAxis;
     public string horizontalAxis;
 
@@ -26,6 +27,14 @@ public class PlayerInputJoystickConfig: PlayerInputConfig
         get
         {
             return Input.GetButtonUp(joystickFireButton);
+        }
+    }
+
+    public override bool DashDown
+    {
+        get
+        {
+            return Input.GetButtonDown(joystickDashButton);
         }
     }
 

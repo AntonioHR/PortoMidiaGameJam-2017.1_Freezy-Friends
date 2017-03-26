@@ -29,4 +29,9 @@ public class PlayerAimState : PlayerActionState
     {
         fsm.AdvanceTo(new PlayerShootState(fsm));
     }
+
+    public override void OnDashDown()
+    {
+        fsm.AdvanceTo(new PlayerDashState(fsm));
+    }
 }

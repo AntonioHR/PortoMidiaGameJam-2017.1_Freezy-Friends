@@ -20,5 +20,8 @@ public class PlayerInput : MonoBehaviour {
             player.ShootDown();
         else if(config.ShootUp)
             player.ShootUp();
+
+        if (config.DashDown)
+            player.DashDown();
 	}
 }

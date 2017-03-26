@@ -10,5 +10,7 @@ public abstract class PlayerInputConfig:ScriptableObject
     public abstract bool ShootDown { get; }
     public abstract bool ShootUp { get; }
 
+    public abstract bool DashDown { get; }
+
     public abstract Vector3 Axis { get; }
 }

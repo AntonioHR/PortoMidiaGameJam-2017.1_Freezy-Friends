@@ -26,4 +26,8 @@ public class PlayerIdleState : PlayerActionState
     {
         fsm.AdvanceTo(new PlayerAimState(fsm));
     }
+    public override void OnDashDown()
+    {
+        fsm.AdvanceTo(new PlayerDashState(fsm));
+    }
 }
