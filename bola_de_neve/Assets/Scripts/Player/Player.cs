@@ -35,7 +35,10 @@ public class Player : MonoBehaviour {
 	
 	void Update () {
         fsm.Current.Update();
-	}
+
+        if (PlayerInput.pointedDirection.sqrMagnitude >= 0.1f)
+            cannon.transform.rotation = Quaternion.LookRotation(PlayerInput.pointedDirection, Vector3.up);
+    }
 
     public void ShootUp()
     {

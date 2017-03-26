@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour {
     public float stopForce = 5f;
     public float velocityAutoStop = .1f;
 
+    public float velocityCap = 2;
+
     void Start () {
         body = GetComponent<Rigidbody>();
         input = GetComponent<PlayerInput>();
@@ -28,7 +30,13 @@ public class PlayerMovement : MonoBehaviour {
         } else if (inputDirection.sqrMagnitude <= velocityAutoStop) {
             Break();
         } else  {
-            body.AddForce(force * inputDirection, ForceMode.Acceleration);
+            var forceVec = force * inputDirection;
+            if (body.velocity.magnitude > velocityCap && Vector3.Dot(forceVec, body.velocity) > 0)
+            {
+                var forceComponent = Vector3.Project(forceVec, body.velocity);
+                forceVec = forceVec - forceComponent;
+            }
+            body.AddForce(forceVec, ForceMode.Acceleration);
         }
         
 	}
