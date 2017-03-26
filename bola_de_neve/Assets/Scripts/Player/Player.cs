@@ -13,6 +13,8 @@ public class Player : MonoBehaviour {
         public float dashForce = 40;
         public float dashTime;
     }
+
+    
     public Settings settings;
     public Cannon cannon;
     public int Points { get; private set; }
