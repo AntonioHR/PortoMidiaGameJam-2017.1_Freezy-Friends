@@ -8,8 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dce88edfa7caebd47b807b8b5d44f4d7, type: 3}
-  m_Name: SmallSnowBall
+  m_Script: {fileID: 11500000, guid: 7d7bad9fd14499f488a7ab9b527bef17, type: 3}
+  m_Name: Joystick2
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1960655329311010, guid: e8e96955495c4fc44ad4e8725351166c, type: 2}
-  shootSpeed: 40
+  joystickFireButton: JOY2_FIRE
+  veticalAxis: P2_VER
+  horizontalAxis: P2_HOR

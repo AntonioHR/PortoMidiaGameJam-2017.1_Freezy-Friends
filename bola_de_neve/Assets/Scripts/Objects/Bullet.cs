@@ -8,6 +8,10 @@ public class Bullet : MonoBehaviour {
     public PlayerDetector detector;
     public Rigidbody body;
 
+    Player owner;
+
+    public Vector3 ImpactVec { get; private set; }
+
     public Settings settings;
     [System.Serializable]
     public class Settings
@@ -21,8 +25,12 @@ public class Bullet : MonoBehaviour {
         Debug.Assert(detector != null);
         Debug.Assert(body != null);
 	}
-	
-	void Update () {
+
+    void Start()
+    {
+        ImpactVec = body.velocity;
+    }
+    void Update () {
 		
 	}
 
@@ -35,7 +43,7 @@ public class Bullet : MonoBehaviour {
             Destroy(this);
         }
         var player = Player.GetFromCollider(collision.collider);
-        if (player != null)
+        if (player != null && player != owner)
         {
             player.HitBy(this);
         }
@@ -43,6 +51,7 @@ public class Bullet : MonoBehaviour {
 
     public void SetOwner(Player owner)
     {
+        this.owner = owner;
         detector.Ignore(owner);
     }
 

@@ -19,7 +19,9 @@ public class HomeToPlayers : MonoBehaviour {
         var closest = detector.Closest;
         if(closest != null)
         {
-            body.AddForce((closest.transform.position - transform.position).normalized * force * (.5f + detector.EaseFactor(closest)), ForceMode.Acceleration);
+            var direction = (closest.transform.position - transform.position).normalized;
+            if(Vector3.Dot(direction, body.velocity) > 0)
+                body.AddForce( direction * force * (.5f + detector.EaseFactor(closest)), ForceMode.Acceleration);
         }
 	}
 }

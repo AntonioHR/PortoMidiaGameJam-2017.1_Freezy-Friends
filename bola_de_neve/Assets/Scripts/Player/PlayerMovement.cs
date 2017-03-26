@@ -38,8 +38,11 @@ public class PlayerMovement : MonoBehaviour {
             }
             body.AddForce(forceVec, ForceMode.Acceleration);
         }
-        
-	}
+
+        if (inputDirection.sqrMagnitude >= 0.1f)
+            transform.rotation = Quaternion.LookRotation(inputDirection, Vector3.up);
+
+    }
 
     void Break()
     {

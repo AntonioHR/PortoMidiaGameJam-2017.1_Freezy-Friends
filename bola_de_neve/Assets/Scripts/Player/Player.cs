@@ -36,15 +36,14 @@ public class Player : MonoBehaviour {
 
     internal void HitBy(Bullet bullet)
     {
-        var direction = (transform.position - bullet.transform.position).normalized;
+        //var direction = (transform.position - bullet.transform.position).normalized;
+        //var direction = bullet.GetComponent<Rigidbody>().velocity.normalized;
+        var direction = bullet.ImpactVec.normalized;
         Body.AddForce(direction * bullet.settings.Impact, ForceMode.Impulse);
     }
 
     void Update () {
         fsm.Current.Update();
-
-        if (PlayerInput.pointedDirection.sqrMagnitude >= 0.1f)
-            cannon.transform.rotation = Quaternion.LookRotation(PlayerInput.pointedDirection, Vector3.up);
     }
 
     public void ShootUp()
