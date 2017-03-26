@@ -36,8 +36,12 @@ public class GameManager : MonoBehaviour {
     void Update () {
         fsm.Current.Update();
 
+    }
+
+    public void CheckForWinner()
+    {
         var winner = players.Find((x) => x.Points >= settings.pointsToWin);
-        if(winner != null)
+        if (winner != null)
         {
             winner.YouWin();
             players.FindAll((x) => x != winner).ForEach((x) => x.YouLose());

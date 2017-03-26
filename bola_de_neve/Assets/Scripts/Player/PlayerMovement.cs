@@ -48,7 +48,6 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (!player.CanBreak)
         {
-            Debug.Log("Not Breaking!!");
             return;
         }
 

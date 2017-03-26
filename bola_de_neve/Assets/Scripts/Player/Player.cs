@@ -12,9 +12,14 @@ public class Player : MonoBehaviour {
         public string name;
         public float dashForce = 40;
         public float dashTime;
+        public int startLife = 3;
     }
 
-    
+    public GameObject[] lifeIndicators;
+
+    public GameObject Corpse;
+
+    int life;
     public Settings settings;
     public Cannon cannon;
     public int Points { get; private set; }
@@ -64,6 +69,7 @@ public class Player : MonoBehaviour {
 
 
     void Start () {
+        life = settings.startLife;
         cannon.owner = this;
         Body = GetComponent<Rigidbody>();
         PlayerInput = GetComponent<PlayerInput>();
@@ -77,13 +83,20 @@ public class Player : MonoBehaviour {
 
     internal void HitBy(Bullet bullet)
     {
+        if (life == 0)
+            return;
         //var direction = (transform.position - bullet.transform.position).normalized;
         //var direction = bullet.GetComponent<Rigidbody>().velocity.normalized;
         var direction = bullet.ImpactVec.normalized;
         Body.AddForce(direction * bullet.settings.Impact, ForceMode.Impulse);
-        fsm.AdvanceTo(new PlayerDeadState(fsm));
-        Points = Math.Max(0, Points - 1);
-        bullet.Owner.KilledOne();
+        life--;
+        if (life <= 0)
+        {
+            life = 0;
+            fsm.AdvanceTo(new PlayerDeadState(fsm));
+            Points = Math.Max(0, Points - 1);
+            bullet.Owner.KilledOne();
+        }
     }
 
     private void KilledOne()
@@ -105,6 +118,11 @@ public class Player : MonoBehaviour {
     void Update () {
         fsm.Current.Update();
         AnimationHandler.SetSpeed(Body.velocity.magnitude);
+        for (int i = 0; i < lifeIndicators.Length; i++)
+        {
+            var lostLife = settings.startLife - life;
+            lifeIndicators[i].SetActive((lostLife) > i);
+        }
     }
 
     public void ShootUp()
@@ -136,11 +154,13 @@ public class Player : MonoBehaviour {
     public void Die()
     {
         gameObject.SetActive(false);
+        GameObject.Instantiate(Corpse, transform.position, transform.rotation);
         if (OnDie != null)
             OnDie(this);
     }
     internal void Respawn()
     {
+        life = settings.startLife;
         gameObject.SetActive(true);
     }
 }

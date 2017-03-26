@@ -12,4 +12,8 @@ public class GameManagerInGameState : GameManagerState
     {
         fsm.GameManager.StartGame();
     }
+    public override void Update()
+    {
+        fsm.GameManager.CheckForWinner();
+    }
 }
