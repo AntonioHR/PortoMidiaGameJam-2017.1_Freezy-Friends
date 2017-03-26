@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
-    public List<Player> players;
+    public List<Player> players { get; private set; }
     public BattleUI BattleUI;
 
     public Transform respawnPointsParent;
+    public Transform spawnPointsParent;
+    public CameraControl CameraRig;
+
+    public GameObject[] playerPrefabs;
+    public int defaultPlayerCount = 4;
 
     [System.Serializable]
     public class Settings
@@ -20,11 +25,20 @@ public class GameManager : MonoBehaviour {
     GameManagerFSM fsm;
     
 	void Start () {
+        var levelConfigs = FindObjectOfType<LevelConfigs>();
+        int playerCount = levelConfigs == null? defaultPlayerCount : levelConfigs.playerCount;
+        settings.pointsToWin = levelConfigs == null? settings.pointsToWin : levelConfigs.PointsToWin;
+        Debug.Assert(playerPrefabs.Length >= playerCount);
         fsm = new GameManagerFSM(this);
         fsm.AdvanceTo(new GameManagerStartState(fsm));
-        foreach (var player in players)
+
+        players = new List<Player>();
+        CameraRig.m_Targets = new Transform[playerCount];
+        for (int i = 0; i < playerPrefabs.Length && i < playerCount; i++)
         {
-            player.OnDie += Player_OnDie;
+            players.Add(GameObject.Instantiate(playerPrefabs[i]).GetComponent<Player>());
+            players[i].OnDie += Player_OnDie;
+            CameraRig.m_Targets[i] = players[i].transform;
         }
 	}
 

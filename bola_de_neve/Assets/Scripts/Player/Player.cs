@@ -70,7 +70,7 @@ public class Player : MonoBehaviour {
     }
 
 
-    void Start () {
+    void Awake () {
         life = settings.startLife;
         cannon.owner = this;
         Body = GetComponent<Rigidbody>();

@@ -1493,7 +1493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af694274baf5574381dcb07f256c9a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 9f9a6fdd3470c704eb454763eb228ca9, type: 2}
+  config: {fileID: 11400000, guid: f1eeca07dded15148924042c351fbce2, type: 2}
 --- !u!114 &114515631282385934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1543,6 +1543,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 14166472de9df3c4f9b4ce28059505f6, type: 3}
   - {fileID: 8300000, guid: fac63500f35bbdc4e8b4c599a1e5af49, type: 3}
   - {fileID: 8300000, guid: 9c18e09f62c2bb84c92dc2516efd8c0e, type: 3}
+  win: {fileID: 8300000, guid: b7fe8620bf3a0324db5abeebb9e46119, type: 3}
+  spawn: {fileID: 8300000, guid: b88393413bb0db048b733c66ea59a2ae, type: 3}
 --- !u!114 &114911152550807416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1561,7 +1563,7 @@ MonoBehaviour:
   Corpse: {fileID: 1448726827586698, guid: 355ebf73c29e3b849923eb4c9bf4fd05, type: 2}
   settings:
     defaultBullet: {fileID: 11400000, guid: 6885939a9dcfd1744a39e0ec73b51813, type: 2}
-    name: Azul
+    name: Blue
     dashForce: 60
     dashTime: 0.2
     startLife: 3

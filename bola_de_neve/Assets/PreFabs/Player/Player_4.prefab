@@ -668,7 +668,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1057571920935506}
-  m_LocalRotation: {x: 0.25796494, y: 0.70248413, z: -0.36720675, w: 0.5523851}
+  m_LocalRotation: {x: 0.25796497, y: 0.7024842, z: -0.36720678, w: 0.55238515}
   m_LocalPosition: {x: -1.110223e-18, y: 0.07056451, z: 4.440892e-18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1421,7 +1421,7 @@ MonoBehaviour:
   Corpse: {fileID: 1448726827586698, guid: de5bfda9cc9611844817bbdd327937b8, type: 2}
   settings:
     defaultBullet: {fileID: 11400000, guid: 6885939a9dcfd1744a39e0ec73b51813, type: 2}
-    name: Vermelho
+    name: Red
     dashForce: 60
     dashTime: 0.2
     startLife: 3
@@ -1515,6 +1515,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 14166472de9df3c4f9b4ce28059505f6, type: 3}
   - {fileID: 8300000, guid: fac63500f35bbdc4e8b4c599a1e5af49, type: 3}
   - {fileID: 8300000, guid: 9c18e09f62c2bb84c92dc2516efd8c0e, type: 3}
+  win: {fileID: 8300000, guid: b7fe8620bf3a0324db5abeebb9e46119, type: 3}
+  spawn: {fileID: 8300000, guid: b88393413bb0db048b733c66ea59a2ae, type: 3}
 --- !u!114 &114652367600061372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1554,7 +1556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af694274baf5574381dcb07f256c9a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 459791f0f21e9604693847a6ac18a94f, type: 2}
+  config: {fileID: 11400000, guid: 9bd31db0af290e14389c68babbdc4183, type: 2}
 --- !u!114 &114976770022312020
 MonoBehaviour:
   m_ObjectHideFlags: 1
