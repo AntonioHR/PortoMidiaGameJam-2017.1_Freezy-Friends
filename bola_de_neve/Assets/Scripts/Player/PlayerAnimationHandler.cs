@@ -21,11 +21,6 @@ public class PlayerAnimationHandler : MonoBehaviour {
 		
 	}
 
-    public void OnShotKeyFrame()
-    {
-        player.OnShotKeyFrame();
-    }
-
     internal void SetSpeed(float magnitude)
     {
         animator.SetFloat("Speed", magnitude);

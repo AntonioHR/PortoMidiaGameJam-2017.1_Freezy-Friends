@@ -4,13 +4,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    public Cannon cannon;
 
-    public BulletData defaultBullet;
+    [Serializable]
+    public class Settings
+    {
+        public BulletData defaultBullet;
+        public string name;
+    }
+    public Settings settings;
+    public Cannon cannon;
+    public int Points { get; private set; }
 
     public Rigidbody Body { get; private set; }
     public PlayerInput PlayerInput { get; private set; }
+    public PlayerUI PlayUI { get; private set; }
     public PlayerAnimationHandler AnimationHandler;
+
+    public event Action<Player> OnDie;
+
+
 
 
     public PlayerActionFSM fsm;
@@ -25,10 +37,19 @@ public class Player : MonoBehaviour {
         }
     }
 
+    public bool Dead
+    {
+        get
+        {
+            return fsm.Current.Dead;
+        }
+    }
+
     void Start () {
         cannon.owner = this;
         Body = GetComponent<Rigidbody>();
         PlayerInput = GetComponent<PlayerInput>();
+        PlayUI = GetComponent<PlayerUI>();
         fsm = new PlayerActionFSM(this);
         if (awaitLevelStart)
             fsm.Push(new PlayerStartState(fsm));
@@ -42,6 +63,25 @@ public class Player : MonoBehaviour {
         //var direction = bullet.GetComponent<Rigidbody>().velocity.normalized;
         var direction = bullet.ImpactVec.normalized;
         Body.AddForce(direction * bullet.settings.Impact, ForceMode.Impulse);
+        fsm.AdvanceTo(new PlayerDeadState(fsm));
+        Points = Math.Max(0, Points - 1);
+        bullet.Owner.KilledOne();
+    }
+
+    private void KilledOne()
+    {
+        Points++;
+    }
+
+    public void YouWin()
+    {
+        fsm.AdvanceTo(new PlayerWinState(fsm));
+    }
+
+    
+    public void YouLose()
+    {
+        fsm.AdvanceTo(new PlayerLoseState(fsm));
     }
 
     void Update () {
@@ -73,9 +113,16 @@ public class Player : MonoBehaviour {
         }
         return player;
     }
+    
 
-    internal void OnShotKeyFrame()
+    public void Die()
     {
-        //throw new NotImplementedException();
+        gameObject.SetActive(false);
+        if (OnDie != null)
+            OnDie(this);
+    }
+    internal void Respawn()
+    {
+        gameObject.SetActive(true);
     }
 }

@@ -18,7 +18,7 @@ public class PlayerShootState : PlayerActionState
     {
         if(obj == PlayerAnimationHandler.FIRE)
         {
-            fsm.player.cannon.Shoot(fsm.player.defaultBullet);
+            fsm.player.cannon.Shoot(fsm.player.settings.defaultBullet);
             fsm.player.AnimationHandler.OnAnimationEvent -= AnimationHandler_OnAnimationEvent;
             fsm.AdvanceTo(new PlayerIdleState(fsm));
         }

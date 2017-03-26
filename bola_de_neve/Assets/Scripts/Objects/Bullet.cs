@@ -10,6 +10,8 @@ public class Bullet : MonoBehaviour {
 
     Player owner;
 
+    public Player Owner { get { return owner; } }
+
     public Vector3 ImpactVec { get; private set; }
 
     public Settings settings;
