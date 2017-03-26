@@ -10,6 +10,8 @@ public class Player : MonoBehaviour {
 
     public Rigidbody Body { get; private set; }
     public PlayerInput PlayerInput { get; private set; }
+    public PlayerAnimationHandler AnimationHandler;
+
 
     public PlayerActionFSM fsm;
 
@@ -44,6 +46,7 @@ public class Player : MonoBehaviour {
 
     void Update () {
         fsm.Current.Update();
+        AnimationHandler.SetSpeed(Body.velocity.magnitude);
     }
 
     public void ShootUp()
@@ -55,7 +58,6 @@ public class Player : MonoBehaviour {
     {
         fsm.Current.ShootDown();
     }
-
     public void OnBattleStart()
     {
         fsm.AdvanceTo(new PlayerIdleState(fsm));
@@ -70,5 +72,10 @@ public class Player : MonoBehaviour {
             player = body.owner;
         }
         return player;
+    }
+
+    internal void OnShotKeyFrame()
+    {
+        //throw new NotImplementedException();
     }
 }

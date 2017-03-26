@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 95449863152191142}
   - component: {fileID: 136016355595408776}
   - component: {fileID: 114938517272041042}
+  - component: {fileID: 114209235233452458}
   m_Layer: 0
   m_Name: char
   m_TagString: Untagged
@@ -885,7 +886,7 @@ Animator:
   m_GameObject: {fileID: 1322404299501804}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 10b6951164692442e86e1f84f9761322, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9c4fbdbea999b45d98716b0a96219ed9, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -908,6 +909,17 @@ MonoBehaviour:
   stopForce: 30
   velocityAutoStop: 0.1
   velocityCap: 30
+--- !u!114 &114209235233452458
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1322404299501804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5b3e19ec584a04f82b42452f8abb43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114269426276595210
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -947,6 +959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cannon: {fileID: 114269426276595210}
   defaultBullet: {fileID: 11400000, guid: 6885939a9dcfd1744a39e0ec73b51813, type: 2}
+  AnimationHandler: {fileID: 114209235233452458}
   awaitLevelStart: 0
 --- !u!114 &114938517272041042
 MonoBehaviour:
